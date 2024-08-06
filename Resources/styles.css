@@ -39,3 +39,25 @@
 #miInput{
     margin-left: 200px;
 }
+
+#tituloNota{
+    margin: 15px;
+}
+
+#contenidoNota {
+    margin: 15px;
+}
+
+#botonGuardar {
+    margin-left: 150px;
+}
+
+#botonEliminar {
+    margin-left: 150px;
+}
+
+#contenedor {
+    border: 1px, solid black;
+    margin: 5px;
+    width: 450px;
+}

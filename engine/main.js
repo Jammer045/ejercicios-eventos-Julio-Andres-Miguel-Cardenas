@@ -52,3 +52,56 @@ actualizarValores();
 inputDolar.addEventListener('input', actualizarValores);
 inputPeso.addEventListener('input', actualizarValoresp);
 
+// ejercicio 3
+
+let notas = [];
+
+let guardarNotas = document.getElementById("botonGuardar")
+guardarNotas.addEventListener("click", guardarNota)
+
+function guardarNota() {
+    let titulo = document.getElementById('tituloNota').value;
+    let contenido = document.getElementById('contenidoNota').value;
+
+    if (titulo !== '' && contenido !== '') {
+        let nuevaNota = {
+            titulo,
+            contenido
+        };
+        notas.push(nuevaNota);
+        actualizarLista();
+        limpiarCampos();
+    } else {
+        alert('Por favor, ingresa un título y un contenido para la nota.');
+    }
+}
+
+
+
+function eliminarNota(index) {
+    notas.splice(index, 1);
+    actualizarLista();
+}
+
+let corregir = document.getElementById("botonEliminar")
+corregir.addEventListener("click", eliminarNota)
+
+function actualizarLista() {
+    let lista = document.getElementById('listaNotas');
+    lista.innerHTML = '';
+
+    notas.forEach((nota, index) => {
+        let li = document.createElement('li');
+        li.textContent = `${nota.titulo}: ${nota.contenido}`;
+        let botonEliminar = document.createElement('button');
+        botonEliminar.textContent = 'Eliminar';
+        botonEliminar.onclick = () => eliminarNota(index);
+        li.appendChild(botonEliminar);
+        lista.appendChild(li);
+    });
+}
+
+function limpiarCampos() {
+    document.getElementById('tituloNota').value = '';
+    document.getElementById('contenidoNota').value = '';
+}
